@@ -11,10 +11,11 @@ CREATE TABLE `Office` (
 CREATE TABLE `User` (
     `id` INTEGER NOT NULL AUTO_INCREMENT,
     `username` VARCHAR(191) NOT NULL,
+    `password` VARCHAR(191) NOT NULL,
     `name` VARCHAR(191) NOT NULL,
     `officeId` INTEGER NOT NULL,
     `createdAt` DATETIME(3) NOT NULL DEFAULT CURRENT_TIMESTAMP(3),
-    `updatedAt` DATETIME(3) NOT NULL,
+    `updatedAt` DATETIME(3),
 
     UNIQUE INDEX `User.username_unique`(`username`),
     PRIMARY KEY (`id`)
@@ -27,7 +28,7 @@ CREATE TABLE `Survey` (
     `officeId` INTEGER NOT NULL,
     `response` JSON NOT NULL,
     `createdAt` DATETIME(3) NOT NULL DEFAULT CURRENT_TIMESTAMP(3),
-    `updatedAt` DATETIME(3) NOT NULL,
+    `updatedAt` DATETIME(3),
 
     UNIQUE INDEX `Survey.transaction_id_unique`(`transaction_id`),
     PRIMARY KEY (`id`)

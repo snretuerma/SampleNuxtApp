@@ -1,4 +1,5 @@
 import express from "express";
+import bcrypt from 'bcryptjs'
 import { PrismaClient } from "@prisma/client";
 
 const prisma = new PrismaClient();
@@ -23,9 +24,10 @@ app.post(`/user`, async (req, res) => {
     data: {
       username: req.body.username,
       name: req.body.name,
+      password: bcrypt.hashSync(req.body.password, bcrypt.genSaltSync(10)),
       office: {
         connect: {
-          id: officeId
+          id: req.body.officeId
         }
       },
     }
